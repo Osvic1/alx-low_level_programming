@@ -25,8 +25,10 @@ else
 int line;
 
 for (line = 0; line <= n; line++)
-
+{
 _putchar('_');
+}
+
 }
 
 _putchar('\n');
