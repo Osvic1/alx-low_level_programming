@@ -11,26 +11,22 @@
  */
 void print_line(int n)
 
-
 {
-int line;
+int lin;
 
 if (n <= 0)
-{
-_putchar('\n');
-}
 
-else
 {
+for (lin = 0; lin < n; lin++)
 
-for (line = 1; line <= n; line++)
-{
 _putchar('_');
 }
 
-}
-
 _putchar('\n');
+
+
+
+
 
 
 }
