@@ -17,21 +17,7 @@
 char *_strcat(char *dest, char *src)
 {
 
-int l1, l2, i;
+char *val = strcat(dest, src);
 
-char s1[10] = "dest";
-char s2[7] = "src";
-
-l1 = strlen(s1);
-l2 = strlen(s2);
-
-for (i = 0; i <= l2; i++)
-{
-
-s1[l1 + i] = s2[i];
-
-}
-
-return (dest);
-
+	return (val);
 }
