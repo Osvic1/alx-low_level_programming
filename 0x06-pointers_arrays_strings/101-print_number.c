@@ -11,24 +11,16 @@
  */
 void print_number(int n)
 {
-	unsigned int digit = 1000000000;
-	unsigned int num = n * 10;
+unsigned int num = n;
 
-	if (n == 0)
+	if (n < 0)
 	{
-		_putchar(n + 48);
+		_putchar('-');
+		num = -num;
 	}
-	else
-	{
-		if (n < 0)
-		{
-			_putchar('-');
-			n = -n;
-			num = -num;
-		}
-		while (digit > num)
-			digit /= 10;
-		while (digit /= 10)
-			_putchar(((n / digit) % 10) + 48);
-	}
+
+	if ((num / 10) > 0)
+		print_number(num / 10);
+
+	_putchar((num % 10) + '0');
 }
