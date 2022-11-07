@@ -6,62 +6,95 @@
 #include "main.h"
 
 /**
- * ch_free_grid - Main Entry
- * @grid: input
- * @height: input
+ * alloc - allocates space in memory for an array
+ * @str: string
+ * @len: length of string
+ * @size: size of array
+ *
+ * Return: a pointer to the array or null if allocation was unsucessful
  */
-void ch_free_grid(char **grid, unsigned int height)
+char **alloc(char *str, int len, int size)
 {
-	if (grid != NULL && height != 0)
+	int i, j, wide;
+	char **a, before;
+
+	a = malloc((size + 1) * sizeof(char *));
+	before = ' ';
+
+	for (i = 0; i < size; i++)
 	{
-		for (; height > 0; height--)
-			free(grid[height]);
-		free(grid[height]);
-		free(grid);
+		while (j < len)
+		{
+			if (str[j] == ' ' && before != ' ')
+			{
+				before = ' ';
+				j++;
+				break;
+			}
+			if (str[j] != ' ')
+				wide++;
+			before = str[j];
+			j++;
+		}
+
+		a[i] = malloc((wide + 1) * sizeof(char));
+		if (a[i] == NULL)
+		{
+			return (NULL);
+		}
+		wide = 0;
 	}
+	a[size] = NULL;
+
+	return (a);
 }
+
 /**
- * strtow - Main Entry
- * @str: input
- * Return: 0
+ * strtow - splits a string into words
+ * @str: the string to split
+ *
+ * Return: a pointer to an array of strings or NULL if error
  */
 char **strtow(char *str)
 {
-	char **aout;
-	unsigned int c, height, i, j, a1;
+	char **a, before = ' ';
+	int i, j = 0, k = 0, c = 0, len, size = 0;
 
-	if (str == NULL || *str == '\0')
+	if (str == NULL || strlen(str) == 0)
 		return (NULL);
-	for (c = height = 0; str[c] != '\0'; c++)
-		if (str[c] != ' ' && (str[c + 1] == ' ' || str[c + 1] == '\0'))
-			height++;
-	aout = malloc((height + 1) * sizeof(char *));
-	if (aout == NULL || height == 0)
+	len = strlen(str);
+	for (i = 0; i < len; i++)
 	{
-		free(aout);
-		return (NULL);
+		if (str[i] != ' ')
+			c = 1;
+		if (str[i] != ' ' && before == ' ')
+			size++;
+		before = str[i];
 	}
-	for (i = a1 = 0; i < height; i++)
+	a = alloc(str, len, size);
+	if (a == NULL || c == 0)
+		return (NULL);
+	before = ' ';
+	for (i = 0; i < size; i++)
 	{
-		for (c = a1; str[c] != '\0'; c++)
+		while (j < len)
 		{
-			if (str[c] == ' ')
-				a1++;
-			if (str[c] != ' ' && (str[c + 1] == ' ' || str[c + 1] == '\0'))
+			if (str[j] == ' ' && before != ' ')
 			{
-				aout[i] = malloc((c - a1 + 2) * sizeof(char));
-				if (aout[i] == NULL)
-				{
-					ch_free_grid(aout, i);
-					return (NULL);
-				}
+				before = ' ';
+				j++;
 				break;
 			}
+			if (str[j] != ' ')
+			{
+				a[i][k] = str[j];
+				k++;
+			}
+			before = str[j];
+			j++;
 		}
-		for (j = 0; a1 <= c; a1++, j++)
-			aout[i][j] = str[a1];
-		aout[i][j] = '\0';
+		a[i][k] = '\0';
+		k = 0;
 	}
-	aout[i] = NULL;
-	return (aout);
+	return (a);
 }
