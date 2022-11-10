@@ -16,21 +16,20 @@
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
 	char *ar;
-	unsigned int ar_size, i;
+	unsigned int i;
 
 	if (nmemb == 0 || size == 0)
 
 		return (NULL);
 
-	ar_size = nmemb * size;
 
-	ar = malloc(ar_size);
+	ar = malloc(nmemb * size);
 
 	if (ar == NULL)
 
 		return (NULL);
 
-	for (i = 0; i < ar_size; i++)
+	for (i = 0; i < nmemb; i++)
 
 		ar[i] = '0';
 
