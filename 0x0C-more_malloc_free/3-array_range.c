@@ -2,9 +2,11 @@
  * File: 3-array_range.c
  * Auth: Timothy Victor
  */
+
 #include "main.h"
 #include <stdlib.h>
 #include <stdio.h>
+
 /**
  * array_range - Create array of integers filled with numbers from min to max
  * @min: First number in the array
