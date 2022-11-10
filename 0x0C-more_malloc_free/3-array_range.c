@@ -1,6 +1,6 @@
 /*
  * File: 3-array_range.c
- * Auth: Brennan D Baraban
+ * Auth: Timothy Victor
  */
 #include "main.h"
 #include <stdlib.h>
@@ -14,24 +14,21 @@
  */
 int *array_range(int min, int max)
 {
-	int *ar;
-	int i, size, n;
+int *array, index, size;
 
 	if (min > max)
-
 		return (NULL);
 
-	size = max - min;
+	size = max - min + 1;
 
-	ar = malloc((size + 1) * sizeof(int));
-	i = 0;
-	n = min;
+	array = malloc(sizeof(int) * size);
 
-	while (n <= max)
-	{
-		ar[i] = n;
-		i++;
-		n++;
-	}
-	return (ar);
+	if (array == NULL)
+		return (NULL);
+
+	for (index = 0; index < size; index++)
+		array[index] = min++;
+
+	return (array);
+
 }
