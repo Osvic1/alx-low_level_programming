@@ -32,7 +32,7 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 
 	for (i = 0; i < ar_size; i++)
 
-		ar[i] = '0'
+		ar[i] = '0';
 
 	return (ar);
 }
