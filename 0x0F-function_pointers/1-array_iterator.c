@@ -11,14 +11,16 @@
  * @size: Size of array
  * @action: Function to call on array
 */
+
 void array_iterator(int *array, size_t size, void (*action)(int))
 {
 	unsigned int i;
 
-	i = 0;
-	while (i < size)
+	if (action && array)
 	{
-		action(array[i]);
-		i++;
+		for (i = 0; i < size; i++)
+		{
+			action(array[i]);
+		}
 	}
 }
