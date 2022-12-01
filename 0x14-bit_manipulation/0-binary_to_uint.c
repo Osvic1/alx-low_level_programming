@@ -1,3 +1,8 @@
+/*
+ * File: 0-binary_to_uint.c
+ * Auth: Timothy Victor
+ */
+
 #include <stdlib.h>
 #include "main.h"
 

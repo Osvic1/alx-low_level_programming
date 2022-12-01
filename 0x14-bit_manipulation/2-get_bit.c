@@ -1,3 +1,8 @@
+/*
+ * File: 2-get_bit.c
+ * Auth: Timothy Victor
+ */
+
 #include "main.h"
 
 /**

@@ -1,3 +1,8 @@
+/*
+ * File: 1-print_binary.c
+ * Auth: Timothy Victor
+ */
+
 #include "main.h"
 
 /**
