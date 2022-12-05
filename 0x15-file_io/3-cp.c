@@ -1,8 +1,5 @@
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
+#include "main.h"
+
 /**
  * main - copies the content of a file to another file.
  *
@@ -10,6 +7,7 @@
  * @argv: argument vector.
  * Return: Always 0.
  */
+
 int main(int argc, char *argv[])
 {
 	int fd1, fd2, chars_read, chars_written, file_closed, file2_closed;
